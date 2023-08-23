@@ -21,9 +21,13 @@ router.post("/mint", async (req, res) => {
     return res.json({ error });
   }
 });
-router.get("/get", async (req, res) => {
+router.get("/:tokenid", async (req, res) => {
   console.log("routes.index.get");
-  const response = await getNFT("hola!!!");
+  console.log("routes.index.get req.params: ", req.params);
+  const { tokenid } = req.params;
+  console.log("routes.index.get tokenid: ", tokenid);
+
+  const response = await getNFT(tokenid);
   return res.json(response);
 });
 
